@@ -1023,6 +1023,12 @@ def test_literal_series() -> None:
     )
 
 
+def test_literal_dtype():
+    df = pl.DataFrame([{"a": 1}]).with_columns(a=pl.lit(2.34,dtype=pl.String))
+    assert_frame_equal(df, pl.DataFrame([{"a": "2.34"}]))
+
+
+
 def test_write_csv() -> None:
     df = pl.DataFrame(
         {
