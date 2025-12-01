@@ -9,8 +9,20 @@ repository = { workspace = true }
 description = "Testing suite for the Polars DataFrame library"
 
 [dependencies]
-polars-core = { workspace = true, features = ["dtype-array", "dtype-categorical", "dtype-struct"] }
-polars-ops = { workspace = true, features = ["abs", "is_close"] }
+polars-core = { workspace = true, features = ["dtype-array", "dtype-categorical", "dtype-struct","dtype-decimal"] }
+polars-ops = { workspace = true, features = ["abs","is_close","dtype-array"] }
+arrow = { workspace = true}
+polars-utils = {workspace = true}
+rand = "0.9.2"
+
+
+[dev-dependencies]
+criterion = {version = "0.7.0", features = ["html_reports"]}
+
+
+[[bench]]
+name = "my_benchmark"
+harness = false
 
 [lints]
 workspace = true
